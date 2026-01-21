@@ -179,38 +179,4 @@ class Enumerable {
   }
 }
 
-// 사용 예제
-const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-
-const result = new Enumerable(numbers)
-  .where(x => x % 2 === 0)      // 짝수만
-  .select(x => x * x)            // 제곱
-  .take(3)                        // 처음 3개
-  .toArray();
-
-console.log(result); // [4, 16, 36]
-
-// 더 복잡한 예제
-const products = [
-  { id: 1, name: 'Laptop', price: 1000, category: 'Electronics' },
-  { id: 2, name: 'Mouse', price: 25, category: 'Electronics' },
-  { id: 3, name: 'Desk', price: 300, category: 'Furniture' },
-  { id: 4, name: 'Chair', price: 150, category: 'Furniture' }
-];
-
-const expensiveProducts = new Enumerable(products)
-  .where(p => p.price > 100)
-  .orderBy(p => p.price)
-  .select(p => ({ name: p.name, price: p.price }))
-  .toArray();
-
-console.log(expensiveProducts);
-
-// 그룹화 예제
-const grouped = new Enumerable(products)
-  .groupBy(p => p.category)
-  .toArray();
-
-console.log(grouped);
-
 module.exports = Enumerable;
